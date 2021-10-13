@@ -1,7 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { Alert } from 'reactstrap';
 import { deleteToDos, updateToDos } from '../api/data/toDoData';
+
+const TodoStyle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  align-items: center;
+
+  .fade {
+    display: flex;
+    width: 100%;
+  }
+
+  h5 {
+    flex-grow: 2;
+    margin: auto 20px;
+  }
+
+  button {
+    color: white;
+
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+
+  .btn-danger {
+    margin-left: 5px;
+  }
+
+  .done {
+    opacity: 0.5;
+  }
+
+  i {
+    font-size: 24px;
+  }
+`;
 
 export default function ToDo({ todo, setToDos, setEditItem }) {
   const handleClick = (method) => {
@@ -14,20 +52,22 @@ export default function ToDo({ todo, setToDos, setEditItem }) {
   };
 
   return (
-    <div>
+    <TodoStyle>
       <Alert color="light" role="alert">
         {todo.complete ? (
-          'DONE'
+          <button className="btn btn-success done" type="button">
+            <i className="fas fa-check-circle" />
+          </button>
         ) : (
           <button
             onClick={() => handleClick('complete')}
             className="btn btn-success"
             type="button"
           >
-            COMPLETE
+            <i className="fas fa-circle" />
           </button>
         )}
-        {todo.name}
+        <h5>{todo.name}</h5>
         <button
           onClick={() => setEditItem(todo)}
           className="btn btn-info"
@@ -43,7 +83,7 @@ export default function ToDo({ todo, setToDos, setEditItem }) {
           DELETE
         </button>
       </Alert>
-    </div>
+    </TodoStyle>
   );
 }
 
