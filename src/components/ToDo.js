@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Alert } from 'reactstrap';
-import { deleteToDos, updateToDos } from '../api/data/toDoData';
+import { deleteTodo, updateTodo } from '../api/data/todoData';
 
 const TodoStyle = styled.div`
   display: flex;
@@ -41,13 +41,15 @@ const TodoStyle = styled.div`
   }
 `;
 
-export default function ToDo({ todo, setToDos, setEditItem }) {
+export default function Todo({ todo, setTodos, setEditItem }) {
   const handleClick = (method) => {
     if (method === 'delete') {
-      deleteToDos(todo.firebaseKey).then(setToDos);
-    } else {
+      deleteTodo(todo.firebaseKey).then(setTodos);
+    } else if (method === 'complete') {
       // update the value of complete on the todo
-      updateToDos({ ...todo, complete: true }).then(setToDos);
+      updateTodo({ ...todo, complete: true }).then(setTodos);
+    } else {
+      updateTodo({ ...todo, complete: false }).then(setTodos);
     }
   };
 
@@ -55,7 +57,11 @@ export default function ToDo({ todo, setToDos, setEditItem }) {
     <TodoStyle>
       <Alert color="light" role="alert">
         {todo.complete ? (
-          <button className="btn btn-success done" type="button">
+          <button
+            onClick={() => handleClick('incomplete')}
+            className="btn btn-success done"
+            type="button"
+          >
             <i className="fas fa-check-circle" />
           </button>
         ) : (
@@ -87,7 +93,7 @@ export default function ToDo({ todo, setToDos, setEditItem }) {
   );
 }
 
-ToDo.propTypes = {
+Todo.propTypes = {
   todo: PropTypes.shape({
     name: PropTypes.string,
     complete: PropTypes.bool,
@@ -95,6 +101,6 @@ ToDo.propTypes = {
     uid: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,
-  setToDos: PropTypes.func.isRequired,
+  setTodos: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
 };
