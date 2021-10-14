@@ -1,14 +1,82 @@
 {
-  "todo1": {
-    "name": "To Do 1",
-    "date": "2021/09/1",
-    "complete": false,
-    "uid": "123456"
+  "-MlwTo7r-a0USSTrPgPN" : {
+    "category" : "Important",
+    "complete" : false,
+    "date" : "2021-10-14T01:47:05.942Z",
+    "firebaseKey" : "-MlwTo7r-a0USSTrPgPN",
+    "name" : "homework",
+    "uid" : ""
   },
-  "todo2": {
-    "name": "To Do 2",
-    "date": "2021/10/1",
-    "complete": false,
-    "uid": "123456"
+  "-MlwTq-v2yG66WItvo5F" : {
+    "category" : "Important",
+    "complete" : true,
+    "date" : "2021-10-14T01:47:13.678Z",
+    "firebaseKey" : "-MlwTq-v2yG66WItvo5F",
+    "name" : "To Do 1",
+    "uid" : ""
+  },
+  "-MlwTvpaG_I9fCO81bZT" : {
+    "category" : "Work",
+    "complete" : false,
+    "date" : "2021-10-14T01:47:37.277Z",
+    "firebaseKey" : "-MlwTvpaG_I9fCO81bZT",
+    "name" : "mow lawn",
+    "uid" : ""
+  },
+  "-MlwTxiJBvAXO7ICkpaV" : {
+    "category" : "Chores",
+    "complete" : false,
+    "date" : "2021-10-14T01:47:45.174Z",
+    "firebaseKey" : "-MlwTxiJBvAXO7ICkpaV",
+    "name" : "wash dishes",
+    "uid" : ""
+  },
+  "-MlwTz8E8c56yikwtcxU" : {
+    "category" : "Chores",
+    "complete" : true,
+    "date" : "2021-10-14T01:47:51.072Z",
+    "firebaseKey" : "-MlwTz8E8c56yikwtcxU",
+    "name" : "sweep",
+    "uid" : ""
+  },
+  "-MlwU-cdF8sh-zQneeAc" : {
+    "category" : "Chores",
+    "complete" : false,
+    "date" : "2021-10-14T01:47:57.118Z",
+    "firebaseKey" : "-MlwU-cdF8sh-zQneeAc",
+    "name" : "vaccuum",
+    "uid" : ""
+  },
+  "-MlwU4LNuZFaNeZETwnP" : {
+    "category" : "Personal",
+    "complete" : false,
+    "date" : "2021-10-14T01:48:16.406Z",
+    "firebaseKey" : "-MlwU4LNuZFaNeZETwnP",
+    "name" : "To Do 2",
+    "uid" : ""
+  },
+  "-MlwU6NBVaGog_Qf6HIQ" : {
+    "category" : "Personal",
+    "complete" : true,
+    "date" : "2021-10-14T01:48:24.703Z",
+    "firebaseKey" : "-MlwU6NBVaGog_Qf6HIQ",
+    "name" : "To Do 3",
+    "uid" : ""
+  },
+  "-MlwU7ZTjxLBsRwFnkcU" : {
+    "category" : "Personal",
+    "complete" : true,
+    "date" : "2021-10-14T01:48:29.528Z",
+    "firebaseKey" : "-MlwU7ZTjxLBsRwFnkcU",
+    "name" : "To Do 4",
+    "uid" : ""
+  },
+  "-MlwUABANrxmyxCj96CS" : {
+    "category" : "Errands",
+    "complete" : false,
+    "date" : "2021-10-14T01:48:40.414Z",
+    "firebaseKey" : "-MlwUABANrxmyxCj96CS",
+    "name" : "groceries",
+    "uid" : ""
   }
 }

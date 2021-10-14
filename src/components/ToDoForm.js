@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { createToDo, updateToDos } from '../api/data/toDoData';
+import { createTodo, updateTodo } from '../api/data/todoData';
 
 const FormStyle = styled.div`
   form {
@@ -10,7 +10,7 @@ const FormStyle = styled.div`
     margin-top: 20px;
 
     .form-control {
-      width: 414px;
+      width: 2056px;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
@@ -32,7 +32,7 @@ const initialState = {
   category: '',
   uid: '',
 };
-export default function ToDoForm({ obj, setToDos, setEditItem }) {
+export default function TodoForm({ obj, setTodos, setEditItem }) {
   const [formInput, setFormInput] = useState(initialState);
 
   const handleChange = (e) => {
@@ -64,14 +64,14 @@ export default function ToDoForm({ obj, setToDos, setEditItem }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       // update the todo
-      updateToDos(formInput).then((todos) => {
-        setToDos(todos);
+      updateTodo(formInput).then((todos) => {
+        setTodos(todos);
         resetForm();
       });
     } else {
-      createToDo({ ...formInput, date: new Date() }).then((todos) => {
+      createTodo({ ...formInput, date: new Date() }).then((todos) => {
         // update the DOM with the new Todo
-        setToDos(todos);
+        setTodos(todos);
         // reset the form
         resetForm();
       });
@@ -81,17 +81,15 @@ export default function ToDoForm({ obj, setToDos, setEditItem }) {
   return (
     <FormStyle>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">
-          <input
-            className="form-control"
-            name="name"
-            id="name"
-            placeholder="ADD A YOU-DO"
-            value={formInput.name}
-            onChange={handleChange}
-            required
-          />
-        </label>
+        <input
+          className="form-control"
+          name="name"
+          id="name"
+          placeholder="ADD A YOU-DO"
+          value={formInput.name}
+          onChange={handleChange}
+          required
+        />
         <select
           className="form-select"
           aria-label="Default select example"
@@ -101,7 +99,9 @@ export default function ToDoForm({ obj, setToDos, setEditItem }) {
           onChange={handleChange}
           required
         >
-          <option hidden>{obj.category || 'Category'}</option>
+          <option hidden value="">
+            Category
+          </option>
           <option value="Important">Important</option>
           <option value="Work">Work</option>
           <option value="Chores">Chores</option>
@@ -116,7 +116,7 @@ export default function ToDoForm({ obj, setToDos, setEditItem }) {
   );
 }
 
-ToDoForm.propTypes = {
+TodoForm.propTypes = {
   obj: PropTypes.shape({
     name: PropTypes.string,
     firebaseKey: PropTypes.string,
@@ -125,8 +125,8 @@ ToDoForm.propTypes = {
     category: PropTypes.string,
     uid: PropTypes.string,
   }),
-  setToDos: PropTypes.func.isRequired,
+  setTodos: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
 };
 
-ToDoForm.defaultProps = { obj: {} };
+TodoForm.defaultProps = { obj: {} };
