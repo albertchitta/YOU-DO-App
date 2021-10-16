@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-// import ToDo from '../components/ToDo';
-import CategorizedTodos from '../components/CategorizedTodos';
 import { getTodos } from '../api/data/todoData';
 import TodoForm from '../components/TodoForm';
+import Navigation from '../components/Navigation';
+import Routes from '../routes';
 
 const ContainerStyle = styled.div`
   width: 644px;
@@ -17,7 +17,12 @@ const ContainerStyle = styled.div`
     font-weight: normal;
   }
 
-  h3,
+  h3 {
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+  }
+
   h4 {
     color: white;
     margin-top: 20px;
@@ -29,26 +34,17 @@ function Initialize() {
   const [editItem, setEditItem] = useState({});
 
   useEffect(() => {
-    getTodos().then((todoArray) => {
+    getTodos(false).then((todoArray) => {
       setTodos(todoArray);
     });
   }, []);
 
   return (
     <ContainerStyle>
+      <Navigation />
       <h1>YOU-DO</h1>
       <TodoForm obj={editItem} setTodos={setTodos} setEditItem={setEditItem} />
-      <div className="mt-5">
-        {todos.length ? (
-          <CategorizedTodos
-            todos={todos}
-            setTodos={setTodos}
-            setEditItem={setEditItem}
-          />
-        ) : (
-          <h3>Add A YOU DO!</h3>
-        )}
-      </div>
+      <Routes todos={todos} setTodos={setTodos} setEditItem={setEditItem} />
     </ContainerStyle>
   );
 }

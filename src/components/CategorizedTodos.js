@@ -8,7 +8,6 @@ export default function CategorizedTodos({ todos, setTodos, setEditItem }) {
   const categoryGroups = () => {
     const sortedObj = todos.reduce((todoObject, currentObject) => {
       const main = todoObject;
-      // if the current category already exists, push the currentObject into the array...otherwise, set the value to an array and push the currentObject into it.
       (main[currentObject.category] = main[currentObject.category] || []).push(
         currentObject,
       );
