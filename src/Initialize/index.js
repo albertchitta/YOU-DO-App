@@ -34,9 +34,7 @@ function Initialize() {
   const [editItem, setEditItem] = useState({});
 
   useEffect(() => {
-    getTodos(false).then((todoArray) => {
-      setTodos(todoArray);
-    });
+    getTodos(false).then(setTodos);
   }, []);
 
   return (

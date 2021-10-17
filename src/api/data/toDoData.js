@@ -3,13 +3,6 @@ import firebaseConfig from '../apiKeys';
 
 const dbUrl = firebaseConfig.databaseURL;
 
-const getAllTodos = () => new Promise((resolve, reject) => {
-  axios
-    .get(`${dbUrl}/todos.json`)
-    .then((response) => resolve(Object.values(response.data)))
-    .catch(reject);
-});
-
 const getTodos = (value) => new Promise((resolve, reject) => {
   axios
     .get(`${dbUrl}/todos.json?orderBy="complete"&equalTo=${value}`)
@@ -20,6 +13,19 @@ const getTodos = (value) => new Promise((resolve, reject) => {
 const getCompletedTodos = () => new Promise((resolve, reject) => {
   getTodos(true)
     .then((todoArray) => resolve(todoArray))
+    .catch(reject);
+});
+
+const getAllTodos = () => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/todos.json`)
+    .then((response) => {
+      if (response.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 

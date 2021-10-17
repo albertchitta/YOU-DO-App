@@ -12,14 +12,18 @@ export default function Completed({ todos, setTodos, setEditItem }) {
 
   return (
     <div>
-      {completedTodos.map((todo) => (
-        <Todo
-          key={todo.firebaseKey}
-          todo={todo}
-          setTodos={setTodos}
-          setEditItem={setEditItem}
-        />
-      ))}
+      {completedTodos.length ? (
+        completedTodos.map((todo) => (
+          <Todo
+            key={todo.firebaseKey}
+            todo={todo}
+            setTodos={setTodos}
+            setEditItem={setEditItem}
+          />
+        ))
+      ) : (
+        <h3>Add A YOU DO!</h3>
+      )}
     </div>
   );
 }
