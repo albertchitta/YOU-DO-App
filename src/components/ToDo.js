@@ -102,5 +102,9 @@ Todo.propTypes = {
     firebaseKey: PropTypes.string,
   }).isRequired,
   setTodos: PropTypes.func.isRequired,
-  setEditItem: PropTypes.func.isRequired,
+  setEditItem: PropTypes.func,
+};
+
+Todo.defaultProps = {
+  setEditItem: () => {},
 };
