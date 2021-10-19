@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import styled from 'styled-components';
+import firebaseConfig from '../api/apiKeys';
 import { getTodos } from '../api/data/todoData';
 import TodoForm from '../components/TodoForm';
 import Navigation from '../components/Navigation';
@@ -41,6 +42,7 @@ function Initialize() {
   //   getTodos(false).then(setTodos);
   // }, []);
   useEffect(() => {
+    firebase.initializeApp(firebaseConfig);
     firebase.auth().onAuthStateChanged((authed) => {
       if (authed) {
         // something to happen
