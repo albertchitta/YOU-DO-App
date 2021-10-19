@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Todo from './Todo';
 
-export default function CategorizedTodos({ todos, setTodos, setEditItem }) {
+const CategorizedTodos = ({ todos, setTodos, setEditItem }) => {
   const [categorizedTodos, setCategorizedTodos] = useState({});
 
   const categoryGroups = () => {
@@ -38,10 +38,12 @@ export default function CategorizedTodos({ todos, setTodos, setEditItem }) {
       ))}
     </div>
   );
-}
+};
 
 CategorizedTodos.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.object).isRequired,
   setTodos: PropTypes.func.isRequired,
   setEditItem: PropTypes.func.isRequired,
 };
+
+export default CategorizedTodos;
