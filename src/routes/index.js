@@ -18,7 +18,7 @@ export default function Routes({ todos, setTodos, setEditItem }) {
         />
         <Route
           exact
-          path="/Completed"
+          path="/completed"
           component={() => (
             <Completed
               todos={todos}
@@ -29,7 +29,7 @@ export default function Routes({ todos, setTodos, setEditItem }) {
         />
         <Route
           exact
-          path="/All"
+          path="/all"
           component={() => (
             <All todos={todos} setTodos={setTodos} setEditItem={setEditItem} />
           )}

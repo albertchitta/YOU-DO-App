@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getCompletedTodos } from '../api/data/todoData';
-import Todo from '../components/Todo';
+import { getTodos } from '../api/data/todoData';
+import CategorizedTodos from '../components/CategorizedTodos';
 
 export default function Completed({ todos, setTodos, setEditItem }) {
   const [completedTodos, setCompletedTodos] = useState([]);
 
   useEffect(() => {
-    getCompletedTodos().then(setCompletedTodos);
+    let isMounted = true;
+    getTodos(true).then((todoArray) => {
+      if (isMounted) setCompletedTodos(todoArray);
+    });
+    return () => {
+      isMounted = false;
+    }; // cleanup function
   }, [todos]);
 
   return (
     <div>
       {completedTodos.length ? (
-        completedTodos.map((todo) => (
-          <Todo
-            key={todo.firebaseKey}
-            todo={todo}
-            setTodos={setTodos}
-            setEditItem={setEditItem}
-          />
-        ))
+        <CategorizedTodos
+          todos={completedTodos}
+          setTodos={setTodos}
+          setEditItem={setEditItem}
+        />
       ) : (
         <h3>Add A YOU DO!</h3>
       )}
