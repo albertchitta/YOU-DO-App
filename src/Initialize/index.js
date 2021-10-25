@@ -42,7 +42,9 @@ function Initialize() {
   //   getTodos(false).then(setTodos);
   // }, []);
   useEffect(() => {
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
     firebase.auth().onAuthStateChanged((authed) => {
       if (authed) {
         // something to happen
